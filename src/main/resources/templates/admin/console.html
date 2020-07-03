@@ -1,0 +1,297 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="utf-8">
+    <title>layuiAdmin 主页示例模板二</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" th:href="@{/static/layuiadmin/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/layuiadmin/style/admin.css}" media="all">
+    <link rel="stylesheet" th:href="@{/static/common/css/aliIconFont.css}" media="all">
+</head>
+<style>
+    .layui-col-md2{
+        width:20%;
+    }
+</style>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+
+        <div class="layui-col-sm6 layui-col-md2">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    部门
+                    <span class="layui-badge layui-bg-blue layuiadmin-badge">   </span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font" id="departmentCount">9,999,666</p>
+                    <p>
+                        总计部门数量
+                        <span class="layuiadmin-span-color">     <i class="layui-inline layui-icon iconfont iconbumen"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md2">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    员工
+                    <span class="layui-badge layui-bg-cyan layuiadmin-badge">  </span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+                    <p class="layuiadmin-big-font" id="employeeCount">33,555</p>
+                    <p>
+                        总计在线员工数量
+                        <span class="layuiadmin-span-color">     <i class="layui-inline layui-icon iconfont iconrenyuanguanli"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md2">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    请假
+                    <span class="layui-badge layui-bg-green layuiadmin-badge">   </span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+
+                    <p class="layuiadmin-big-font" id="leaveCount">999,666</p>
+                    <p>
+                        今日请假数量
+                        <span class="layuiadmin-span-color">   <i class="layui-inline layui-icon iconfont iconqingjiaguanli-"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md2">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    补卡
+                    <span class="layui-badge layui-bg-orange layuiadmin-badge">  </span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+
+                    <p class="layuiadmin-big-font" id="reissueCount">66,666</p>
+                    <p>
+                        今日补卡数量
+                        <span class="layuiadmin-span-color">   <i class="layui-inline layui-icon iconfont iconbuka"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md2">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    补卡
+                    <span class="layui-badge layui-bg-orange layuiadmin-badge">  </span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list">
+
+                    <p class="layuiadmin-big-font" id="reissueCount">66,666</p>
+                    <p>
+                        今日补卡数量
+                        <span class="layuiadmin-span-color">   <i class="layui-inline layui-icon iconfont iconbuka"></i></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    图表
+                    <div style="float: right;">
+                        <span>从</span>
+                        <div class="layui-inline">
+                            <input type="text" id="startDate" name="year" placeholder="开始日期"  class="layui-input" style="width: 200px;">
+                        </div>
+                        <span>到</span>
+
+                        <div class="layui-inline">
+                            <input type="text" id="endDate" name="year" placeholder="结束日期"  class="layui-input" style="width: 200px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-row">
+                        <div class="layui-col-lg12">
+                            <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-pagetwo">
+                                <div id="LAY-index-pagetwo" style="width: 100%;height:100%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script th:src="@{/static/common/jquery.min.js}"></script>
+<script th:src="@{/static/layuiadmin/layui/layui.js}"></script>
+<script th:src="@{/static/echarts/echarts.min.js}"></script>
+<!--<script th:src="@{/static/layuiadmin/lib/extend/echartsTheme.js}"></script>-->
+<script th:inline="javascript">
+    layui.use(['form','layer','util','laydate','table'], function(){
+        form = layui.form;
+        layer =layui.layer;
+        table =layui.table;
+        util =layui.util;
+        laydate =layui.laydate;
+
+        laydate.render({
+            elem:"#startDate",
+            type:"date",
+        });
+        laydate.render({
+            elem:"#endDate",
+            type:"date",
+        });
+    });
+
+        var myChart = echarts.init(document.getElementById('LAY-index-pagetwo'));
+    var base = +new Date(1968, 9, 3);
+    var oneDay = 24 * 3600 * 1000;
+    var date = [];
+
+
+
+    var data = [Math.random() * 300];
+
+
+    for (var i = 1; i < 20000; i++) {
+        var now = new Date(base += oneDay);
+        date.push([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
+        data.push(Math.round((Math.random() - 0.5) * 20 + data[i - 1]));
+    }
+    option = {
+        tooltip: {
+            trigger: 'axis',
+            position: function (pt) {
+                return [pt[0], '10%'];
+            }
+        },
+        title: {
+            left: 'center',
+            text: '大数据量面积图',
+        },
+        toolbox: {
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: date
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%']
+        },
+        dataZoom: [{
+            type: 'inside',
+            start: 0,
+            end: 10
+        }, {
+            start: 0,
+            end: 10,
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+                color: '#fff',
+                shadowBlur: 3,
+                shadowColor: 'rgba(0, 0, 0, 0.6)',
+                shadowOffsetX: 2,
+                shadowOffsetY: 2
+            }
+        }],
+        series: [
+            {
+                name:'模拟数据',
+                type:'line',
+                smooth:true,
+                symbol: 'none',
+                sampling: 'average',
+                itemStyle: {
+                    color: 'rgb(255, 70, 131)'
+                },
+                areaStyle: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgb(255, 158, 68)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(255, 70, 131)'
+                    }])
+                },
+                data: data
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.clear();
+    myChart.setOption(option);
+//    function initChats2() {
+//        $.post("/admin/countLateAndEarly",function(res){
+//            var daysList=res.data.daysList;
+//            var lateCountsList=res.data.lateCountsList;
+//            var earlyCountsList=res.data.earlyCountsList;
+//            var option = {
+//                title: {
+//                    text: '折线图堆叠'
+//                },
+//                tooltip: {
+//                    trigger: 'axis'
+//                },
+//                legend: {
+//                    data:['邮件营销','联盟广告']
+//                },
+//                grid: {
+//                    left: '3%',
+//                    right: '4%',
+//                    bottom: '3%',
+//                    containLabel: true
+//                },
+//                toolbox: {
+//                    feature: {
+//                        saveAsImage: {}
+//                    }
+//                },
+//                xAxis: {
+//                    type: 'category',
+//                    boundaryGap: false,
+//                    data: ['周一','周二','周三','周四','周五','周六','周日']
+//                },
+//                yAxis: {
+//                    type: 'value'
+//                },
+//                series: [
+//                    {
+//                        name:'邮件营销',
+//                        type:'line',
+////                        stack: '总量',
+//                        data:[2, 2, 2, 2, 2, 2, 2]
+//                    },
+//                    {
+//                        name:'联盟广告',
+//                        type:'line',
+////                        stack: '总量',
+//                        data:[1, 1, 1, 1, 1, 1, 1]
+//                    }
+//                ]
+//            };
+//            // 使用刚指定的配置项和数据显示图表。
+//            myChart.clear();
+//            myChart.setOption(option);
+//        });
+//    }
+</script>
+</body>
+</html>

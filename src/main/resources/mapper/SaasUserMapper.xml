@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootmybatisplus.mapper.SaasUserMapper">
+    <!--<select id="paging" resultType="com.example.springbootmybatisplus.model.SaasUser">-->
+        <!--select ssu.*, ssurt.name as saasUserRoleName from s_saas_user ssu left join s_saas_user_role_type ssurt on ssu.saas_user_role_id=ssurt.id-->
+        <!--<where>-->
+            <!--<if test="null!=keywords and !('').equals(keywords)">-->
+                <!--(ssu.name like concat('%',#{keywords},'%') or ssu.phone like concat('%',#{keywords},'%'))-->
+            <!--</if>-->
+        <!--</where>-->
+    <!--</select>-->
+    <select id="paging" resultType="com.example.springbootmybatisplus.model.SaasUser">
+        select ssu.*, ssurt.name as saasUserRoleName from s_saas_user ssu left join s_saas_user_role_type ssurt on ssu.saas_user_role_id=ssurt.id
+        <where>
+            <if test="null!=saasUserPagingRequestVo.keywords and !('').equals(saasUserPagingRequestVo.keywords)">
+                (ssu.name like concat('%',#{saasUserPagingRequestVo.keywords},'%') or ssu.phone like concat('%',#{saasUserPagingRequestVo.keywords},'%'))
+            </if>
+        </where>
+    </select>
+</mapper>

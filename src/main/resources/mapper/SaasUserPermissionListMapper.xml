@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootmybatisplus.mapper.SaasUserPermissionListMapper">
+    <select id="getSaasUserPermission" resultType="java.lang.String">
+        select ssupl.descript from s_saas_user ssu
+        join s_saas_user_role_type ssurt on ssu.saas_user_role_id=ssurt.id
+        join s_saas_user_role_permission ssurp on ssurt.id=ssurp.saas_user_role_id
+        join s_saas_user_permission_list ssupl on ssurp.saas_user_permission_id=ssupl.id
+        where ssu.id=#{saasUserId}
+    </select>
+</mapper>
