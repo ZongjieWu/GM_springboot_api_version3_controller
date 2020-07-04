@@ -21,7 +21,8 @@ public class SaasUserLoginController {
     @Autowired
     private ISaasUserLoginService saasUserLoginService;
 
-    @ApiOperation(value = "登入",notes = "登入", authorizations = {@Authorization(value="version")})
+    @ApiOperation(value = "登入",notes = "登入")
+//    @ApiOperation(value = "登入",notes = "登入", authorizations = {@Authorization(value="version")})
     @PostMapping("/login")
     @ApiVersion("1.0.2")
     public Result<SaasUserBaseInfoResponseVo> add(@Validated SaasUserLoginRequestVo loginRequestVo) {
